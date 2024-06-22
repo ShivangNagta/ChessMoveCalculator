@@ -76,10 +76,10 @@ public sealed class ChessBoardPlacementHandler : MonoBehaviour {
 
     #region Highlight Testing
 
-    private void Start()
-    {
-        //StartCoroutine(testing());
-    }
+    //private void Start()
+    //{
+    //    StartCoroutine(testing());
+    //}
 
     //private IEnumerator testing()
     //{
