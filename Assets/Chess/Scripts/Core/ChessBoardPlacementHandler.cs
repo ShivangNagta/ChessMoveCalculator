@@ -7,9 +7,11 @@ using System.Collections;
 public sealed class ChessBoardPlacementHandler : MonoBehaviour {
     [SerializeField] private GameObject[] _rowsArray;
     [SerializeField] private GameObject _highlightPrefab;
+    [SerializeField] private GameObject _enemyHighlightPrefab;
     private GameObject[,] _chessBoard;
 
     internal static ChessBoardPlacementHandler Instance;
+
 
     private void Awake() {
         Instance = this;
@@ -45,6 +47,18 @@ public sealed class ChessBoardPlacementHandler : MonoBehaviour {
         }
 
         Instantiate(_highlightPrefab, tile.transform.position, Quaternion.identity, tile.transform);
+    }
+
+    internal void EnemyHighlight(int row, int col)
+    {
+        var tile = GetTile(row, col).transform;
+        if (tile == null)
+        {
+            Debug.LogError("Invalid row or column.");
+            return;
+        }
+
+        Instantiate(_enemyHighlightPrefab, tile.transform.position, Quaternion.identity, tile.transform);
     }
 
     internal void ClearHighlights() {
